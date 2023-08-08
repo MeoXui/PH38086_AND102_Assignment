@@ -23,10 +23,6 @@ public class DangNhap extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
 
-        Toast.makeText(this,"Tự động đăng nhập", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, TrangChu.class));
-        finish();
-
         docTaiKhoan();
 
         EditText edtUN = findViewById(R.id.edt_un_login),

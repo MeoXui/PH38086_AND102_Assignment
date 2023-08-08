@@ -85,18 +85,22 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         edtSL.setText(String.valueOf(sanPham.sl));
 
         view.findViewById(R.id.btn_sv_add_update).setOnClickListener(v -> {
-            sanPham.setTen(edtTen.getText().toString());
-            sanPham.setGia(Integer.parseInt(edtGia.getText().toString()));
-            sanPham.setSl(Integer.parseInt(edtSL.getText().toString()));
+            try {
+                sanPham.setTen(edtTen.getText().toString());
+                sanPham.setGia(Integer.parseInt(edtGia.getText().toString()));
+                sanPham.setSl(Integer.parseInt(edtSL.getText().toString()));
 
-            boolean check = dao.updateSP(sanPham);
-            if (check) {
-                Toast.makeText(context, "Đã thay đổi thông tin sản phẩm", Toast.LENGTH_SHORT).show();
-                list.clear();
-                list.addAll(dao.layDSSP());
-                notifyDataSetChanged();
-                dialog.dismiss();
-            } else Toast.makeText(context, "Đã xảy ra lỗi", Toast.LENGTH_SHORT).show();
+                boolean check = dao.updateSP(sanPham);
+                if (check) {
+                    Toast.makeText(context, "Đã thay đổi thông tin sản phẩm", Toast.LENGTH_SHORT).show();
+                    list.clear();
+                    list.addAll(dao.layDSSP());
+                    notifyDataSetChanged();
+                    dialog.dismiss();
+                } else Toast.makeText(context, "Đã xảy ra lỗi", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Toast.makeText(context, "Đã xảy ra lỗi", Toast.LENGTH_SHORT).show();
+            }
         });
 
         view.findViewById(R.id.btn_out_add_update).setOnClickListener(v -> dialog.dismiss());

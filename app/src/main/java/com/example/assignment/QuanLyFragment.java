@@ -36,7 +36,9 @@ public class QuanLyFragment extends Fragment {
         CSDL csdl = new CSDL(context);
         DAO dao = new DAO(context,csdl);
         List<SanPham> list = new ArrayList<>();
-        ListAdapter adapter = new ListAdapter(context, list, dao);;
+        ListAdapter adapter = new ListAdapter(context, list, dao);
+
+        refresh(recyclerView,context,dao,list,adapter);
 
         view.findViewById(R.id.btn_them).setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -53,8 +55,12 @@ public class QuanLyFragment extends Fragment {
             iD.set(1);
             viewThem.findViewById(R.id.btn_sv_add_update).setOnClickListener(v1 -> {
                 String ten = edtTen.getText().toString();
-                int gia = Integer.parseInt(edtGia.getText().toString()),
-                        sl = Integer.parseInt(edtSL.getText().toString());
+                int gia = 0, sl = 0;
+
+                try {
+                    gia = Integer.parseInt(edtGia.getText().toString());
+                    sl = Integer.parseInt(edtSL.getText().toString());
+                } catch (Exception ignored) {}
 
                 SanPham sanPham = new SanPham(iD.get(),ten,gia,sl);
                 iD.getAndIncrement();
