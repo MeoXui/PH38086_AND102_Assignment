@@ -40,6 +40,8 @@ public class QuanLyFragment extends Fragment {
 
         refresh(recyclerView,context,dao,list,adapter);
 
+        if(context == null) return view;
+
         view.findViewById(R.id.btn_them).setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             LayoutInflater layoutInflater = ((Activity)context).getLayoutInflater();

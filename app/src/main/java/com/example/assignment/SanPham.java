@@ -5,9 +5,10 @@ import androidx.annotation.NonNull;
 public class SanPham {
     public int ma;
     public String ten;
-    public int gia, sl;
+    public double gia;
+    public int sl;
 
-    public SanPham(int ma, String ten, int gia, int sl) {
+    public SanPham(int ma, String ten, double gia, int sl) {
         this.ma = ma;
         this.ten = ten;
         this.gia = gia;
@@ -22,7 +23,7 @@ public class SanPham {
         this.ten = ten;
     }
 
-    public void setGia(int gia) {
+    public void setGia(double gia) {
         this.gia = gia;
     }
 

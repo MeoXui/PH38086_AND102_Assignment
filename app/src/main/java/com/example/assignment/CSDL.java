@@ -14,7 +14,7 @@ public class CSDL extends SQLiteOpenHelper {
         db.execSQL("Create Table SanPham(" +
                 "masp integer primary key," +
                 "tensp text," +
-                "giaban integer," +
+                "giaban real," +
                 "soluong integer)");
     }
 
